@@ -1,14 +1,13 @@
 import paho.mqtt.client as mqtt
-
 import multiprocessing
 import time
-
 from utils.database_commands import get_interval_publish_to_blockchain_from_sqlite
+from blockchain.add_sensor_data import add_sensor_data_to_blockchain
 
 
 class MqttSubscriber:
-    def __init__(self, host, port, topic):
-        self.broker_host = host
+    def __init__(self, address, port, topic):
+        self.broker_address = address
         self.broker_port = port
         self.topic = topic
         self.mqtt_client = mqtt.Client()
@@ -19,15 +18,15 @@ class MqttSubscriber:
             blockchain_queue.put(received_data)
             print("[Subscriber] Received data and sent to blockchain queue. Data:", received_data)
 
-        self.mqtt_client.connect(self.broker_host, self.broker_port)
+        self.mqtt_client.connect(self.broker_address, self.broker_port)
         self.mqtt_client.on_message = on_message
         self.mqtt_client.subscribe(self.topic)
-        print('[Subscriber] Starting subscriber...')
+        print('Starting subscriber...')
         self.mqtt_client.loop_forever()
 
 
-def start_subscriber(blockchain_queue, host, port, topic):
-    subscriber = MqttSubscriber(host, port, topic)
+def start_subscriber(blockchain_queue, address, port, topic):
+    subscriber = MqttSubscriber(address, port, topic)
     subscriber.subscribe_to_mqtt(blockchain_queue)
 
 
@@ -39,18 +38,18 @@ def start_sending_to_blockchain(blockchain_queue):
             break
         print(f"[Blockchain Middleware] Received data from queue. Data: {data}")
         print('[Blockchain Middleware] Sending to blockchain...')
-        # TODO: send to blockchain
+        res = add_sensor_data_to_blockchain(data)
         blockchain_publish_interval = get_interval_publish_to_blockchain_from_sqlite(sqlite_filepath)
         time.sleep(blockchain_publish_interval)
 
 
 #
 if __name__ == '__main__':
-    broker_host = '127.0.0.1'
+    broker_address = '127.0.0.1'
     broker_port = 1883
     broker_topic = 'weather'
     queue = multiprocessing.Queue()
-    p1 = multiprocessing.Process(target=start_subscriber, args=(queue, broker_host, broker_port, broker_topic))
+    p1 = multiprocessing.Process(target=start_subscriber, args=(queue, broker_address, broker_port, broker_topic))
     p2 = multiprocessing.Process(target=start_sending_to_blockchain, args=(queue,))
     p1.start()
     p2.start()
