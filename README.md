@@ -49,7 +49,8 @@ The project simulates a reading from a fake sensor (data from the [UMass Smart D
 
 ### 1. run mosquitto broker service on port 1883
 
-run the command prompt as an administrator
+run the command prompt as an administrator and
+navigate to your broker installation location
 
 `net start mosquitto`
 
