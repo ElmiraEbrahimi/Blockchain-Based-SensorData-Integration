@@ -1,0 +1,1 @@
+{"deployed_sensor_contract_address": "0x53B9fE2FaA2e95821aB44bFE1ed4457787A8e474"}
