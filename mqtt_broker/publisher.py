@@ -2,6 +2,7 @@ import paho.mqtt.client as mqtt
 from fake_sensor.weather_sensor import WeatherSensor
 import json
 from time import sleep
+from utils.database_commands import get_interval_publish_to_broker_from_sqlite
 
 
 class MqttPublisher:
@@ -28,11 +29,13 @@ if __name__ == '__main__':
     broker_host = '127.0.0.1'
     broker_port = 1883
     broker_topic = 'weather'
-    publish_interval = 5
+    sqlite_filepath = '../django_website/db.sqlite3'
+    publish_interval = get_interval_publish_to_broker_from_sqlite(sqlite_filepath)
     w_sensor = WeatherSensor(csv_filepath='../data/homeA2014.csv')
     publisher = MqttPublisher(broker_host, broker_port, broker_topic, publish_interval)
     reader = w_sensor.get_data_from_dataset()
     while True:
         sensor_data = next(reader)
         publisher.publish_to_mqtt(sensor_data)
+        publisher.interval = get_interval_publish_to_broker_from_sqlite(sqlite_filepath)
         sleep(publisher.interval)
