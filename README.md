@@ -45,6 +45,22 @@ The project simulates a reading from a fake sensor (data from the [UMass Smart D
     Password (again): admin
     Bypass password validation and create user anyway? [y/N]:y
 
+### Blockchain
+
+`cd blockchain/`
+
+#### Compile Solidity
+
+`python compile_contract.py`
+
+#### Deploy compiled contract
+
+`python deploy.py`
+
+#### Run event handler
+
+`python event_handler.py`
+
 ## Run
 
 ### 1. run mosquitto broker service on port 1883
