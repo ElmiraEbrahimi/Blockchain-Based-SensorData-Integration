@@ -70,13 +70,17 @@ navigate to your broker installation location
 
 `net start mosquitto`
 
-### 2. run Django server:
+### 2. run ganache on localhost:8545
+
+### 3. run Django server:
 
 `cd django_website`
 
 `python manage.py runserver`
 
- visit (http://localhost:8000/admin) to see server running
+ visit (http://localhost:8000/admin) to see running server
+
+### 4. run event_handler.py 
 
 ### 3. run subscriber.py 
 
