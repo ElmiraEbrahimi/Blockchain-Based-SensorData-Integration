@@ -14,7 +14,7 @@ The project simulates a reading from a fake sensor (data from the [UMass Smart D
 
 - Install [Python 3.11](https://www.python.org/downloads/)
 
-- Install [Ganache](https://trufflesuite.com/ganache/).It can also be installed via [NPM](https://docs.nethereum.com/en/latest/ethereum-and-clients/ganache-cli/)
+- Install [Ganache](https://trufflesuite.com/ganache/). It can also be installed via [NPM](https://docs.nethereum.com/en/latest/ethereum-and-clients/ganache-cli/)
 
 - Install [Mosquitto Broker](https://mosquitto.org/download/)
 
@@ -36,7 +36,7 @@ The project simulates a reading from a fake sensor (data from the [UMass Smart D
 
 `python manage.py migrate`
 
-#####If you get an error, delete the migrations folder and db.sqlite3 and repeat this step again.
+If you get an error, delete the migrations folder and db.sqlite3 and repeat these steps again.
 
 #### Create superuser
 
@@ -65,9 +65,9 @@ The project simulates a reading from a fake sensor (data from the [UMass Smart D
 
 ## Run
 
-### 1. run mosquitto broker service on port 1883
+### 1. run mosquitto broker service on default `port 1883`
 
-####run the command prompt as an administrator and
+run the command prompt as an administrator and
 navigate to your broker installation location
 
 `net start mosquitto`
@@ -80,10 +80,10 @@ navigate to your broker installation location
 
 `python manage.py runserver`
 
- visit (http://localhost:8000/admin) to see running server
+ visit (http://localhost:8000/admin) to see the running server
 
-### 4. run event_handler.py 
+### 4. run `blockchain/event_handler.py` 
 
-### 3. run subscriber.py 
+### 3. run `mqtt_broker/subscriber.py` 
 
-### 4. run publisher.py
+### 4. run `mqtt_broker/publisher.py`
