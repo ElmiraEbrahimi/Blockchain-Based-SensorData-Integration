@@ -20,9 +20,9 @@ The project simulates a reading from a fake sensor (data from the [UMass Smart D
 
 ### Set virtual environment
 
-`py -3.11 -m venv venv
+`py -3.11 -m venv venv`
 
-.\venv\Scripts\activate`
+`.\venv\Scripts\activate`
 
 ### Install Requirements
 
@@ -36,7 +36,7 @@ The project simulates a reading from a fake sensor (data from the [UMass Smart D
 
 `python manage.py migrate`
 
-If you encounter an error, delete the migrations folder and db.sqlite3 and repeat this step again.
+#####If you get an error, delete the migrations folder and db.sqlite3 and repeat this step again.
 
 #### Create superuser
 
@@ -67,12 +67,12 @@ If you encounter an error, delete the migrations folder and db.sqlite3 and repea
 
 ### 1. run mosquitto broker service on port 1883
 
-run the command prompt as an administrator and
+####run the command prompt as an administrator and
 navigate to your broker installation location
 
 `net start mosquitto`
 
-### 2. run ganache on localhost:8545
+### 2. run ganache on `localhost:8545`
 
 ### 3. run Django server:
 
