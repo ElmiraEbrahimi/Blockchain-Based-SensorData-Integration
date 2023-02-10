@@ -65,16 +65,18 @@ If you get an error, delete the `migrations` folder and `db.sqlite3` and repeat 
 
 ## Run
 
-- 1. run mosquitto broker service on default `port 1883`
+To run the project, do the following steps in order.
+
+- run mosquitto broker service on default `port 1883`
 
 run the command prompt as an administrator and
 navigate to your broker installation location
 
 `net start mosquitto`
 
--2. run ganache on `localhost:8545`
+- run ganache on `localhost:8545`
 
-### 3. run Django server:
+- run Django server:
 
 `cd django_website`
 
@@ -82,8 +84,8 @@ navigate to your broker installation location
 
  visit (http://localhost:8000/admin) to see the running server
 
-### 4. run `blockchain/event_handler.py` 
+- run `blockchain/event_handler.py` 
 
-### 3. run `mqtt_broker/subscriber.py` 
+- run `mqtt_broker/subscriber.py` 
 
-### 4. run `mqtt_broker/publisher.py`
+- run `mqtt_broker/publisher.py`
