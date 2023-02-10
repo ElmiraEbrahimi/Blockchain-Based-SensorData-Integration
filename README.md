@@ -12,9 +12,9 @@ The project simulates a reading from a fake sensor (data from the [UMass Smart D
 
 ## Prerequisites
 
-- Install [Python3.11](https://www.python.org/downloads/)
+- Install [Python 3.11](https://www.python.org/downloads/)
 
-- Install [Ganache](https://trufflesuite.com/ganache/)
+- Install [Ganache](https://trufflesuite.com/ganache/).Ganache can also be installed via [NPM](https://docs.nethereum.com/en/latest/ethereum-and-clients/ganache-cli/)
 
 - Install [Mosquitto Broker](https://mosquitto.org/download/)
 
