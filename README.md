@@ -36,7 +36,7 @@ The project simulates a reading from a fake sensor (data from the [UMass Smart D
 
 `python manage.py migrate`
 
-If you get an error, delete the migrations folder and db.sqlite3 and repeat these steps again.
+If you get an error, delete the `migrations` folder and `db.sqlite3` and repeat these steps again.
 
 #### Create superuser
 
@@ -65,14 +65,14 @@ If you get an error, delete the migrations folder and db.sqlite3 and repeat thes
 
 ## Run
 
-### 1. run mosquitto broker service on default `port 1883`
+- 1. run mosquitto broker service on default `port 1883`
 
 run the command prompt as an administrator and
 navigate to your broker installation location
 
 `net start mosquitto`
 
-### 2. run ganache on `localhost:8545`
+-2. run ganache on `localhost:8545`
 
 ### 3. run Django server:
 
