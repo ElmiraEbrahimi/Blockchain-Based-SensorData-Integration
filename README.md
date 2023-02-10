@@ -14,15 +14,15 @@ The project simulates a reading from a fake sensor (data from the [UMass Smart D
 
 - Install [Python 3.11](https://www.python.org/downloads/)
 
-- Install [Ganache](https://trufflesuite.com/ganache/).Ganache can also be installed via [NPM](https://docs.nethereum.com/en/latest/ethereum-and-clients/ganache-cli/)
+- Install [Ganache](https://trufflesuite.com/ganache/).It can also be installed via [NPM](https://docs.nethereum.com/en/latest/ethereum-and-clients/ganache-cli/)
 
 - Install [Mosquitto Broker](https://mosquitto.org/download/)
 
 ### Set virtual environment
 
-`py -3.11 -m venv venv`
+`py -3.11 -m venv venv
 
-`.\venv\Scripts\activate`
+.\venv\Scripts\activate`
 
 ### Install Requirements
 
