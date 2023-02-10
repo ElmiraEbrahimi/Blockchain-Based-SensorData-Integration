@@ -36,6 +36,8 @@ The project simulates a reading from a fake sensor (data from the [UMass Smart D
 
 `python manage.py migrate`
 
+If you encounter an error, delete the migrations folder and db.sqlite3 and repeat this step again.
+
 #### Create superuser
 
 `python manage.py createsuperuser`
