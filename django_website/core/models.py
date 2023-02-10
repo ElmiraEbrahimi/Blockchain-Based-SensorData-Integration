@@ -1,5 +1,4 @@
 import re
-
 from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
 from django.contrib.auth.models import PermissionsMixin
 from django.core.validators import MinLengthValidator
@@ -54,14 +53,13 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 
 class Notification(Base):
-    class NotifType(models.TextChoices):
-        BLOCKCHAIN = 'bl', 'Blockchain'
-
-    notif_type = models.CharField(max_length=2, choices=NotifType.choices, verbose_name="Notification Type")
-    value = models.TextField()
+    event_index = models.PositiveIntegerField()
+    event_message = models.CharField(max_length=255)
+    event_sensor_data = models.JSONField()
 
     def __str__(self):
         return f'Notification - {self.id}'
+
 
 
 class MiddlewareFilter(Base):
@@ -71,6 +69,8 @@ class MiddlewareFilter(Base):
     name = models.CharField(max_length=255, default='Middleware Filters')
     interval_publish_to_broker = models.FloatField(default=3, verbose_name='Broker Publish Interval')
     interval_publish_to_blockchain = models.FloatField(default=5, verbose_name='Blockchain Publish Interval')
+    high_temp_range = models.FloatField(default=35, verbose_name='High Temperature Range')
+    low_temp_range = models.FloatField(default=10, verbose_name='Low Temperature Range')
 
     def __str__(self):
         return 'Middleware Filters'
