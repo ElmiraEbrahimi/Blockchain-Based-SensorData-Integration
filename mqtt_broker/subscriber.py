@@ -1,7 +1,8 @@
 import paho.mqtt.client as mqtt
 import multiprocessing
 import time
-from utils.database_commands import get_interval_publish_to_blockchain_from_sqlite
+import json
+from utils.database_commands import get_interval_publish_to_blockchain_from_sqlite, get_low_high_temp_range
 from blockchain.add_sensor_data import add_sensor_data_to_blockchain
 
 
@@ -37,13 +38,26 @@ def start_sending_to_blockchain(blockchain_queue):
         if data is None:
             break
         print(f"[Blockchain Middleware] Received data from queue. Data: {data}")
-        print('[Blockchain Middleware] Sending to blockchain...')
-        res = add_sensor_data_to_blockchain(data)
+        sensor_temperature = float(json.loads(data)['temperature'])
+        sqlite_path = '../django_website/db.sqlite3'
+        low_temp_range, high_temp_range = get_low_high_temp_range(sqlite_path)
+        if low_temp_range <= sensor_temperature <= high_temp_range:
+            res = add_sensor_data_to_blockchain(data)
+            if res:
+                print('[Blockchain Middleware] Successfully sent data to blockchain.')
+            else:
+                print('[Blockchain Middleware] Failed to send data to blockchain.')
+        else:
+            print(
+                '[Blockchain Middleware] Dirty Temperature data detected. It won\'t be sent to blockchain. Temperature:',
+                sensor_temperature)
         blockchain_publish_interval = get_interval_publish_to_blockchain_from_sqlite(sqlite_filepath)
         time.sleep(blockchain_publish_interval)
 
 
-#
+
+
+
 if __name__ == '__main__':
     broker_address = '127.0.0.1'
     broker_port = 1883
