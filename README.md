@@ -73,6 +73,8 @@ navigate to your broker installation location
 
 - run ganache on `localhost:8545`
 
+`ganache-cli --deterministic`
+
 - run Django server:
 
 `cd django_website`
