@@ -26,7 +26,7 @@ The project simulates reading from a fake sensor (data from the [UMass Smart Dat
 
 ### Install Requirements
 
-`pip3 install -r requirements.txt`
+`pip install -r requirements.txt`
 
 ### Django Server
 
@@ -59,9 +59,6 @@ If you get an error, delete the `migrations` folder and `db.sqlite3` and repeat 
 
 `python deploy.py`
 
-#### Run event handler
-
-`python event_handler.py`
 
 ## Run
 
